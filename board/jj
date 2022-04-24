@@ -1,0 +1,34 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=francis
+Group=www-data
+WorkingDirectory=/home/francis/sol-church-blog
+ExecStart=/home/francis/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/francis/sol-church-blog/church.sock church.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+server {
+
+        server_name 45.79.3.31;
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+            root /home/francis/sol-church-blog;
+        }
+         location /static/admin {
+            alias /home/francis/sol-church-blog/staticfiles/admin/;
+        }
+        location /media/ {
+        root /home/francis/sol-church-blog/;
+        }
+        location / {
+            include proxy_params;
+            proxy_pass http://unix:/home/francis/sol-church-blog/church.sock;
+        }
+	}
+
+
+sudo ln -s /etc/nginx/sites-available/church /etc/nginx/sites-enabled
