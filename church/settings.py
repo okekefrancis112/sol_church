@@ -46,9 +46,6 @@ INSTALLED_APPS = [
     'board.apps.BoardConfig',
     'ckeditor',
     
-    # 'cloudinary_storage',
-    # 'cloudinary',
-    
     # 'Pillow',
 ]
 
