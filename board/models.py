@@ -11,7 +11,6 @@ from django.template.defaultfilters import slugify
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.humanize.templatetags import humanize
-# from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
