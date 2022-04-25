@@ -13,20 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from os import path
-# from decouple import config
 import sys
-
-import cloudinary
-import cloudinary.uploader 
-import cloudinary.api
-
-# import dj_database_url
-# import django_heroku
-
-
-# from ..board.views import initiate_payment
-# from package.board.views import *
-# sys.path.append("..")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,7 +29,7 @@ SECRET_KEY = 'django-insecure-rp#c^&2fdu)zkuimh9gy*_@ck_&pl-$melkm6fm0bxv54*rd3#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', '45.79.3.31']
+ALLOWED_HOSTS = ['*', '96.126.117.184']
 
 
 # Application definition
@@ -59,8 +46,8 @@ INSTALLED_APPS = [
     'board.apps.BoardConfig',
     'ckeditor',
     
-    'cloudinary_storage',
-    'cloudinary',
+    # 'cloudinary_storage',
+    # 'cloudinary',
     
     # 'Pillow',
 ]
@@ -82,7 +69,7 @@ ROOT_URLCONF = 'church.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -112,8 +99,6 @@ if DEBUG:
     
 else:
     pass
-    # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    # DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
 
     DATABASES = {
         'default': {
@@ -161,33 +146,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = BASE_DIR / 'static'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
 
-MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-# Cloudinary stuff
-CLOUDINARY_URL='cloudinary://487983837526748:o-dVAOCMjsswknBjdPiPaqMOeuU@dmt7fse5k'
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dmt7fse5k',
-    'API_KEY': '487983837526748',
-    'API_SECRET': 'o-dVAOCMjsswknBjdPiPaqMOeuU',
-}
 
 SENDER_EMAIL = 'okekefrancis112@gmail.com'
 SENDER_PASSWORD = 'oqbhvmxytokvhazg'
@@ -197,12 +166,6 @@ PAYSTACK_PUBLIC_KEY = 'pk_test_82ea8b5b6fcfb5d9e861ae8ca3caa872cb13a544'
 AUTH_USER_MODEL = 'board.NewUser'
 SESSION_SAVE_EVERY_REQUEST = True
 PAYMENT_SESSION_ID = 'payment_form'  
-
-# CLOUD_NAME='dmt7fse5k'
-# API_KEY='487983837526748'
-# API_SECRET='o-dVAOCMjsswknBjdPiPaqMOeuU'
-# CLOUDINARY_URL='cloudinary://487983837526748:o-dVAOCMjsswknBjdPiPaqMOeuU@dmt7fse5k'
-
 
 
 
